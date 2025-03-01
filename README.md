@@ -52,7 +52,7 @@ dotnet ef database update -p Enterprise.Applications.Identity.Infra -s Enterpris
      - [x] EditUserRoles
      - [x] GetAllUserDetails
      - [x] EditUserProfile/{id}
-   Auth
+   - Auth
      - [x] Login
      - [ ] Logout
      - [ ] RememberPassword 
