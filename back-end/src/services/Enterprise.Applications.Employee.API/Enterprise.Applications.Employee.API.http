@@ -1,0 +1,6 @@
+@Enterprise.Applications.Employee.API_HostAddress = http://localhost:5226
+
+GET {{Enterprise.Applications.Employee.API_HostAddress}}/employee/
+Accept: application/json
+
+###
