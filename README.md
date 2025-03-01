@@ -3,7 +3,7 @@
   application by providing the essential modules needed. It adopts a scalable, low-latency 
   architecture, utilizing the most advanced and modern technologies available.
 
-[![Prject Skills](https://skillicons.dev/icons?i=dotnet,cs,css,wasm)](https://skillicons.dev)
+[![Prject Skills](https://skillicons.dev/icons?i=dotnet,cs,angular,ts,html,css,bootstrap,docker,github,rabbitmq,aws,mongodb,postgres,)](https://skillicons.dev)
 
 ![Screenshot of the documentation using Swagger.](.doc/img/1-swagger-identity-manager.JPG)
 
@@ -38,25 +38,25 @@ dotnet ef database update -p Enterprise.Applications.Identity.Infra -s Enterpris
 ## Project Features ASP.NET Core Web API.
 1. Identity Administration
    - Role
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/6
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/7
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/8
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/9
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/10
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/6)
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/7)
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/8)
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/9)
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/10)
    - User
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/11
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/12
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/13
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/14
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/15
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/16
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/17
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/18
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/19
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/11)
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/12)
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/13)
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/14)
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/15)
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/16)
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/17)
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/18)
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/19)
    Auth
-     - [x] https://github.com/jeffreysSharp/enterprise-applications/issues/20
-     - [ ] https://github.com/jeffreysSharp/enterprise-applications/issues/21
-     - [ ] https://github.com/jeffreysSharp/enterprise-applications/issues/22
+     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/20)
+     - [ ] (https://github.com/jeffreysSharp/enterprise-applications/issues/21)
+     - [ ] (https://github.com/jeffreysSharp/enterprise-applications/issues/22)
 
 
 ## Project Structure
