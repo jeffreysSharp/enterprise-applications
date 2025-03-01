@@ -1,6 +1,0 @@
-@Enterprise.Applications.Identity.API_HostAddress = http://localhost:5133
-
-GET {{Enterprise.Applications.Identity.API_HostAddress}}/identity/
-Accept: application/json
-
-###
