@@ -10,43 +10,49 @@
 2. Open the solution in Visual Studio 2022.
 3. Configure your SQL Server connection in the appsettings.json file.
 4. Run the database migrations to create the necessary tables.
-4.1. Check if the .NET Entity Framework CLI is installed
-4.2. The first step is to verify that the Entity Framework CLI is installed correctly. Run:
+   - Check if the .NET Entity Framework CLI is installed.
+   - The first step is to verify that the Entity Framework CLI is installed correctly. Run the following command:
 
-`dotnet tool list -g`
+```
+ dotnet tool list -g
+```
 
-4.3 If dotnet-ef is not listed, install with Run:
+   - If dotnet-ef is not listed, install withthe following command:
 
-`dotnet tool install --global dotnet-ef`
+```
+dotnet tool install --global dotnet-ef
+```
 
-4.4 After installing the package, run the following command:
+   - After installing the package, run the following command:
 
-`dotnet ef database update -p Enterprise.Applications.Identity.Infra -s Enterprise.Applications.Identity.API -c ApplicationDbContext`
+```
+dotnet ef database update -p Enterprise.Applications.Identity.Infra -s Enterprise.Applications.Identity.API -c ApplicationDbContext`
+```
 
 5. Build and run the ASP.NET Core Web API.
 
 ## Project Features ASP.NET Core Web API.
 1. Identity Administration
 1.1 Role
-- [x] #6
-- [x] #7
-- [x] #8
-- [x] #9
-- [x] #10
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/6
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/7
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/8
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/9
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/10
 1.2 User
-- [x] #11
-- [x] #12
-- [x] #13
-- [x] #14
-- [x] #15
-- [x] #16
-- [x] #17
-- [x] #18
-- [x] #19
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/11
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/12
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/13
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/14
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/15
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/16
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/17
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/18
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/19
 1.3 Auth
-- [x] #20
-- [ ] #21
-- [ ] #22
+- [x] https://github.com/jeffreysSharp/enterprise-applications/issues/20
+- [ ] https://github.com/jeffreysSharp/enterprise-applications/issues/21
+- [ ] https://github.com/jeffreysSharp/enterprise-applications/issues/22
 
 
 ## Project Structure
