@@ -36,13 +36,10 @@ dotnet ef database update -p Enterprise.Applications.Identity.Infra -s Enterpris
 
 
 ## Project Features ASP.NET Core Web API.
-
-## 📌 Lista de Tarefas
-
-| Status | Título | Link |
+| Status | Feature | Issue Url |
 |--------|--------|------|
-| ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/6) | Role - Create | [🔗 Issue #6](https://github.com/jeffreysSharp/enterprise-applications/issues/6) |
-| ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/7) | Role - GetAll | [🔗 Issue #7](https://github.com/jeffreysSharp/enterprise-applications/issues/7) |
+| ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/6) | Role - Create | [Role - Create](https://github.com/jeffreysSharp/enterprise-applications/issues/6) |
+| ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/7) | Role - GetAll | [Role - GetAll](https://github.com/jeffreysSharp/enterprise-applications/issues/7) |
 | ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/8) | Role - Get/{id}| [🔗 Issue #8](https://github.com/jeffreysSharp/enterprise-applications/issues/8) |
 | ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/9) | Role - Delete/{id} | [🔗 Issue #9](https://github.com/jeffreysSharp/enterprise-applications/issues/9) |
 | ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/10) | Role - Delete/{id} | [🔗 Issue #10](https://github.com/jeffreysSharp/enterprise-applications/issues/10) |
@@ -58,32 +55,6 @@ dotnet ef database update -p Enterprise.Applications.Identity.Infra -s Enterpris
 | ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/20) | Auth - Login | [🔗 Issue #20](https://github.com/jeffreysSharp/enterprise-applications/issues/20) |
 | ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/21) | Auth - Logout | [🔗 Issue #21](https://github.com/jeffreysSharp/enterprise-applications/issues/21) |
 | ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/22) | Auth - RememberPassword | [🔗 Issue #22](https://github.com/jeffreysSharp/enterprise-applications/issues/22) |
-
-
-
-
-
-
-1. Identity Administration
-   - Role
-     - [x] Create
-     - [x] GetAll
-     - [x] Get/{id}
-     - [x] Delete/{id}
-   - User
-     - [x] Create
-     - [x] GetAll
-     - [x] Delete/{userId}
-     - [x] GetUserDetails/{userId}
-     - [x] GetUserDetailsByUserName/{userName}
-     - [x] User - AssignRoles
-     - [x] EditUserRoles
-     - [x] GetAllUserDetails
-     - [x] EditUserProfile/{id}
-   - Auth
-     - [x] Login
-     - [ ] Logout
-     - [ ] RememberPassword 
 
 
 ## Project Structure
