@@ -36,9 +36,16 @@ dotnet ef database update -p Enterprise.Applications.Identity.Infra -s Enterpris
 
 
 ## Project Features ASP.NET Core Web API.
-1. Identity Administration
-![Issue #6](https://github.com/jeffreysSharp/enterprise-applications/issues/6)
+Identity Administration
+
+
+![Status](https://github.com/jeffreysSharp/enterprise-applications/issues/7)
+
+
+
 ![Issue #7](https://github.com/jeffreysSharp/enterprise-applications/issues/7)
+
+
      - [Issue #8] (https://github.com/jeffreysSharp/enterprise-applications/issues/8)
      - [Issue #9] (https://github.com/jeffreysSharp/enterprise-applications/issues/9)
      - [Issue #10] (https://github.com/jeffreysSharp/enterprise-applications/issues/10)
