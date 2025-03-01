@@ -37,8 +37,8 @@ dotnet ef database update -p Enterprise.Applications.Identity.Infra -s Enterpris
 
 ## Project Features ASP.NET Core Web API.
 
-![GitHub issue status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/123)
-![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/123)
+![GitHub issue status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/6)
+![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/7)
 [Issue #6](https://github.com/jeffreysSharp/enterprise-applications/issues/6)
 
 
