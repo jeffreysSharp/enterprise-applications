@@ -36,32 +36,26 @@ dotnet ef database update -p Enterprise.Applications.Identity.Infra -s Enterpris
 
 
 ## Project Features ASP.NET Core Web API.
-Identity Administration
-
-
-![Status](https://github.com/jeffreysSharp/enterprise-applications/issues/7)
-
-
-
-![Issue #7](https://github.com/jeffreysSharp/enterprise-applications/issues/7)
-
-
-     - [Issue #8] (https://github.com/jeffreysSharp/enterprise-applications/issues/8)
-     - [Issue #9] (https://github.com/jeffreysSharp/enterprise-applications/issues/9)
-     - [Issue #10] (https://github.com/jeffreysSharp/enterprise-applications/issues/10)
-![Status](https://github.com/jeffreysSharp/enterprise-applications/issues/11)
-![Status](https://github.com/jeffreysSharp/enterprise-applications/issues/12)
-     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/13)
-     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/14)
-     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/15)
-     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/16)
-     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/17)
-     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/18)
-     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/19)
+1. Identity Administration
+   - Role
+     - [x] Create
+     - [x] GetAll
+     - [x] Get/{id}
+     - [x] Delete/{id}
+   - User
+     - [x] Create
+     - [x] GetAll
+     - [x] Delete/{userId}
+     - [x] GetUserDetails/{userId}
+     - [x] GetUserDetailsByUserName/{userName}
+     - [x] User - AssignRoles
+     - [x] EditUserRoles
+     - [x] GetAllUserDetails
+     - [x] EditUserProfile/{id}
    Auth
-     - [x] (https://github.com/jeffreysSharp/enterprise-applications/issues/20)
-     - [ ] (https://github.com/jeffreysSharp/enterprise-applications/issues/21)
-     - [ ] (https://github.com/jeffreysSharp/enterprise-applications/issues/22)
+     - [x] Login
+     - [ ] Logout
+     - [ ] RememberPassword 
 
 
 ## Project Structure
