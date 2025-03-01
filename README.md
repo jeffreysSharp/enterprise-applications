@@ -28,7 +28,7 @@ dotnet tool install --global dotnet-ef
    - After installing the package, run the following command:
 
 ```
-dotnet ef database update -p Enterprise.Applications.Identity.Infra -s Enterprise.Applications.Identity.API -c ApplicationDbContext`
+dotnet ef database update -p Enterprise.Applications.Identity.Infra -s Enterprise.Applications.Identity.API -c ApplicationDbContext
 ```
 
 5. Build and run the ASP.NET Core Web API.
