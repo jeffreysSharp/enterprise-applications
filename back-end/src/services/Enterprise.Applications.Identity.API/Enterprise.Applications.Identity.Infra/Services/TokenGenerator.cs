@@ -37,6 +37,7 @@ namespace Enterprise.Applications.Identity.Infra.Services
                 new Claim(ClaimTypes.Name, userName),
                 new Claim("UserId", userId)
             };
+
             claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
 

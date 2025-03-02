@@ -1,4 +1,5 @@
 ﻿using Enterprise.Applications.Application.Commands.Auth;
+using Enterprise.Applications.Application.Commands.User.Create;
 using Enterprise.Applications.Application.DTOs;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -19,7 +20,14 @@ namespace Enterprise.Applications.API.Controllers
 
         [HttpPost("Login")]
         [ProducesDefaultResponseType(typeof(AuthResponseDTO))]
-        public async Task<IActionResult> Login([FromBody] AuthCommand command)
+        public async Task<IActionResult> Login([FromBody] LoginCommand command)
+        {
+            return Ok(await _mediator.Send(command));
+        }
+
+        [HttpPost("Register")]
+        [ProducesDefaultResponseType(typeof(int))]
+        public async Task<ActionResult> Register(RegisterCommand command)
         {
             return Ok(await _mediator.Send(command));
         }
