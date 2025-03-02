@@ -1,4 +1,4 @@
-# Enterprise Applications whith ASP.NET Core Clean Architecture and CQRS
+# Enterprise Applications whith ASP.NET Core Clean Architecture and CQRS, Angular 19, Bootstrap 5.4, scss
   This project was designed to simplify the initial development of a business management 
   application by providing the essential modules needed. It adopts a scalable, low-latency 
   architecture, utilizing the most advanced and modern technologies available.
