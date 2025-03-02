@@ -24,27 +24,28 @@ builder.Services.AddAuthentication(x =>
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
     x.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;
-}).AddJwtBearer(x =>
+
+}).AddJwtBearer(bearerOptions =>
 {
-    x.RequireHttpsMetadata = false;
-    x.SaveToken = true;
-    x.TokenValidationParameters = new TokenValidationParameters()
+    bearerOptions.RequireHttpsMetadata = true;
+    bearerOptions.SaveToken = true;
+    bearerOptions.TokenValidationParameters = new TokenValidationParameters()
     {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_key)),
         ValidateIssuer = true,
         ValidateAudience = true,
-        ValidateLifetime = true,
-        ValidateIssuerSigningKey = true,
+        ValidateLifetime = true,        
         ValidAudience = _audience,
-        ValidIssuer = _issuer,
-        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_key)),
+        ValidIssuer = _issuer,        
         ClockSkew = TimeSpan.FromMinutes(Convert.ToDouble(_expirtyMinutes))
-
     };
 });
 
 
 // Dependency injection with key
-builder.Services.AddSingleton<ITokenGenerator>(new TokenGenerator(_key, _issuer, _audience, _expirtyMinutes));
+builder.Services.AddSingleton<ITokenGenerator>(new TokenGenerator(
+    _key, _issuer, _audience, _expirtyMinutes));
 
 
 // Include Application Dependency
