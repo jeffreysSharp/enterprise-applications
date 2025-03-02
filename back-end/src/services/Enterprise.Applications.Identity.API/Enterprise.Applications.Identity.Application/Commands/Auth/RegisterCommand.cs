@@ -2,6 +2,7 @@
 using Enterprise.Applications.Application.Common.Interfaces;
 using Enterprise.Applications.Application.DTOs;
 using MediatR;
+using Microsoft.IdentityModel.Tokens;
 
 
 
@@ -33,7 +34,7 @@ namespace Enterprise.Applications.Application.Commands.Auth
         {
             var registerResult = await _identityService.CreateUserAsync(request.UserName, request.Password, request.Email, request.FullName, request.Roles);
 
-            if (!registerResult.isSucceed)            
+            if (registerResult.ToString().IsNullOrEmpty())            
                 throw new BadRequestException("Invalid username or password");            
             else            
                 await _identityService.SigninUserAsync(request.UserName, request.Password);
