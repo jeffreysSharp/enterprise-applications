@@ -30,9 +30,8 @@ namespace Enterprise.Applications.Identity.Infra.Services
                 throw new NotFoundException("User not found");
             }
 
-            await _userManager.AddToRolesAsync(user, roles);
-
-            return "Successfully assign!";
+            var result = await _userManager.AddToRolesAsync(user, roles);
+            return result.Succeeded;
         }
 
         public async Task<string> CreateRoleAsync(string roleName)
@@ -43,12 +42,12 @@ namespace Enterprise.Applications.Identity.Infra.Services
             {
                 throw new ValidationException(result.Errors);
             }
-
-            return "Successfully created!";
+            return result.Succeeded;
         }
 
-        public async Task<(string isSucceed, string userId)> CreateUserAsync(string userName, string password, string email,
-            string fullName, List<string> roles)
+
+        // Return multiple value
+        public async Task<(bool isSucceed, string userId)> CreateUserAsync(string userName, string password, string email, string fullName, List<string> roles)
         {
             var user = new ApplicationUser()
             {
@@ -70,8 +69,7 @@ namespace Enterprise.Applications.Identity.Infra.Services
             {
                 throw new ValidationException(addUserRole.Errors);
             }
-            
-            return ("Successfully created!", user.Id);
+            return (result.Succeeded, user.Id);
         }
 
         public async Task<string> DeleteRoleAsync(string roleId)
@@ -89,13 +87,11 @@ namespace Enterprise.Applications.Identity.Infra.Services
             }
 
             var result = await _roleManager.DeleteAsync(roleDetails);
-
             if (!result.Succeeded)
             {
                 throw new ValidationException(result.Errors);
             }
-
-            return "Successfully deleted!";
+            return result.Succeeded;
         }
 
         public async Task<string> DeleteUserAsync(string userId)
@@ -104,17 +100,17 @@ namespace Enterprise.Applications.Identity.Infra.Services
 
             if (user == null)
             {
-                throw new NotFoundException("User not found");                
+                throw new NotFoundException("User not found");
+                //throw new Exception("User not found");
             }
 
             if (user.UserName == "system" || user.UserName == "admin")
             {
-                throw new Exception("You can not delete system or admin user");                
+                throw new Exception("You can not delete system or admin user");
+                //throw new BadRequestException("You can not delete system or admin user");
             }
-
-            await _userManager.DeleteAsync(user);
-            
-            return "Successfully deleted!";
+            var result = await _userManager.DeleteAsync(user);
+            return result.Succeeded;
         }
 
         public async Task<List<(string id, string fullName, string userName, string email)>> GetAllUsersAsync()
@@ -181,7 +177,7 @@ namespace Enterprise.Applications.Identity.Infra.Services
             if (user == null)
             {
                 throw new NotFoundException("User not found");
-                
+                //throw new Exception("User not found");
             }
 
             return await _userManager.GetUserIdAsync(user);
@@ -234,8 +230,8 @@ namespace Enterprise.Applications.Identity.Infra.Services
         public async Task<string> SigninUserAsync(string userName, string password)
         {
             var result = await _signInManager.PasswordSignInAsync(userName, password, true, false);
+            return result.Succeeded;
 
-            return "Successfully Signin!";
 
         }
 
@@ -244,8 +240,7 @@ namespace Enterprise.Applications.Identity.Infra.Services
             var user = await _userManager.FindByIdAsync(id);
             user.FullName = fullName;
             user.Email = email;
-
-            await _userManager.UpdateAsync(user);
+            var result = await _userManager.UpdateAsync(user);
 
             return "Successfully updated!";
         }
@@ -268,8 +263,7 @@ namespace Enterprise.Applications.Identity.Infra.Services
 
                 return "Successfully updated!";
             }
-
-            return "Failed to update!";
+            return false;
         }
 
         public async Task<string> UpdateUsersRole(string userName, IList<string> usersRole)
@@ -277,8 +271,7 @@ namespace Enterprise.Applications.Identity.Infra.Services
             var user = await _userManager.FindByNameAsync(userName);
             var existingRoles = await _userManager.GetRolesAsync(user);
             var result = await _userManager.RemoveFromRolesAsync(user, existingRoles);
-
-            await _userManager.AddToRolesAsync(user, usersRole);
+            result = await _userManager.AddToRolesAsync(user, usersRole);
 
             return "Successfully updated!";
         }
