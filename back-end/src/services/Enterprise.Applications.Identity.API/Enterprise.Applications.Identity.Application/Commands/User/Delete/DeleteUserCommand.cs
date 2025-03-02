@@ -3,12 +3,12 @@ using MediatR;
 
 namespace Enterprise.Applications.Application.Commands.User.Delete
 {
-    public class DeleteUserCommand : IRequest<int>
+    public class DeleteUserCommand : IRequest<string>
     {
         public string Id { get; set; }
     }
 
-    public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, int>
+    public class DeleteUserCommandHandler : IRequestHandler<DeleteUserCommand, string>
     {
         private readonly IIdentityService _identityService;
 
@@ -16,11 +16,11 @@ namespace Enterprise.Applications.Application.Commands.User.Delete
         {
             _identityService = identityService;
         }
-        public async Task<int> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
+        public async Task<string> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
             var result = await _identityService.DeleteUserAsync(request.Id);
 
-            return result ? 1 : 0;
+            return result;
         }
     }
 }

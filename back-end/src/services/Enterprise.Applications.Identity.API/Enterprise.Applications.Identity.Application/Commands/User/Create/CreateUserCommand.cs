@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Enterprise.Applications.Application.Commands.User.Create
 {
-    public class CreateUserCommand : IRequest<int>
+    public class CreateUserCommand : IRequest<string>
     {
         public string FullName { get; set; }
         public string UserName { get; set; }
@@ -13,17 +13,20 @@ namespace Enterprise.Applications.Application.Commands.User.Create
         public List<string> Roles { get; set; }
     }
 
-    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, int>
+    public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, string>
     {
         private readonly IIdentityService _identityService;
+        
         public CreateUserCommandHandler(IIdentityService identityService)
         {
             _identityService = identityService;
         }
-        public async Task<int> Handle(CreateUserCommand request, CancellationToken cancellationToken)
+
+        public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
         {
             var result = await _identityService.CreateUserAsync(request.UserName, request.Password, request.Email, request.FullName, request.Roles);
-            return result.isSucceed ? 1 : 0;
+
+            return result.ToString();
         }
     }
 }

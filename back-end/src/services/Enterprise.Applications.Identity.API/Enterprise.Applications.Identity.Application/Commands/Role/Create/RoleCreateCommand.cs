@@ -4,12 +4,12 @@ using MediatR;
 
 namespace Enterprise.Applications.Application.Commands.Role.Create
 {
-    public class RoleCreateCommand : IRequest<int>
+    public class RoleCreateCommand : IRequest<string>
     {
         public string RoleName { get; set; }
     }
 
-    public class RoleCreateCommandHandler : IRequestHandler<RoleCreateCommand, int>
+    public class RoleCreateCommandHandler : IRequestHandler<RoleCreateCommand, string>
     {
         private readonly IIdentityService _identityService;
 
@@ -17,10 +17,12 @@ namespace Enterprise.Applications.Application.Commands.Role.Create
         {
             _identityService = identityService;
         }
-        public async Task<int> Handle(RoleCreateCommand request, CancellationToken cancellationToken)
+
+        public async Task<string> Handle(RoleCreateCommand request, CancellationToken cancellationToken)
         {
             var result = await _identityService.CreateRoleAsync(request.RoleName);
-            return result ? 1 : 0;
+
+            return result;
         }
     }
 }

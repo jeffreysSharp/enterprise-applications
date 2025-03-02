@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Enterprise.Applications.Application.Commands.User.Update
 {
-    public class EditUserProfileCommand : IRequest<int>
+    public class EditUserProfileCommand : IRequest<string>
     {
         public string Id { get; set; }
         public string FullName { get; set; }
@@ -11,7 +11,7 @@ namespace Enterprise.Applications.Application.Commands.User.Update
         public List<string> Roles { get; set; }
     }
 
-    public class EditUserProfileCommandHandler : IRequestHandler<EditUserProfileCommand, int>
+    public class EditUserProfileCommandHandler : IRequestHandler<EditUserProfileCommand, string>
     {
         private readonly IIdentityService _identityService;
 
@@ -19,10 +19,12 @@ namespace Enterprise.Applications.Application.Commands.User.Update
         {
             _identityService = identityService;
         }
-        public async Task<int> Handle(EditUserProfileCommand request, CancellationToken cancellationToken)
+
+        public async Task<string> Handle(EditUserProfileCommand request, CancellationToken cancellationToken)
         {
             var result = await _identityService.UpdateUserProfile(request.Id, request.FullName, request.Email, request.Roles);
-            return result ? 1 : 0;
+
+            return result;
         }
     }
 }
