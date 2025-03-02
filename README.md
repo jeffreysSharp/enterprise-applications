@@ -12,6 +12,7 @@
 2. Open the solution in Visual Studio 2022.
 3. Configure your SQL Server connection in the appsettings.json file.
 4. Run the database migrations to create the necessary tables.
+   - In the console, navigate to the directory: enterprise-applications\back-end\src\services\Enterprise.Applications.Identity.API
    - Check if the .NET Entity Framework CLI is installed.
    - The first step is to verify that the Entity Framework CLI is installed correctly. Run the following command:
 
