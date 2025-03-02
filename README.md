@@ -53,6 +53,7 @@ dotnet ef database update -p Enterprise.Applications.Identity.Infra -s Enterpris
 | ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/18) | [User - GetAllUserDetails](https://github.com/jeffreysSharp/enterprise-applications/issues/18) |
 | ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/19) | [User - EditUserProfile/{id}](https://github.com/jeffreysSharp/enterprise-applications/issues/19) |
 | ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/20) | [Auth - Login](https://github.com/jeffreysSharp/enterprise-applications/issues/20) |
+| ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/25) | [Auth - Register](https://github.com/jeffreysSharp/enterprise-applications/issues/25) |
 | ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/21) | [Auth - Logout](https://github.com/jeffreysSharp/enterprise-applications/issues/21) |
 | ![Status](https://img.shields.io/github/issues/detail/s/jeffreysSharp/enterprise-applications/22) | [Auth - RememberPassword](https://github.com/jeffreysSharp/enterprise-applications/issues/22) |
 
