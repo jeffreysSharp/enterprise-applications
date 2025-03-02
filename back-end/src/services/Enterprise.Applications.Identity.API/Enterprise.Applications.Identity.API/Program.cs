@@ -9,6 +9,15 @@ using Microsoft.OpenApi.Models;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
+
+configuration
+        .SetBasePath(Directory.GetCurrentDirectory())
+        .AddJsonFile("appsettings.json", true, true)
+        .AddJsonFile($@"appsettings.{builder.Environment.EnvironmentName}.json", true, true)
+        .AddCommandLine(args)
+        .AddEnvironmentVariables()
+        .AddUserSecrets(typeof(Program).Assembly).Build();
 
 builder.Services.AddControllers();
 

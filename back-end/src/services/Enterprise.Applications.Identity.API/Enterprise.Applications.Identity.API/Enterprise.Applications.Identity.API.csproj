@@ -5,7 +5,19 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <InvariantGlobalization>false</InvariantGlobalization>
+    <UserSecretsId>0acceaaf-de1f-412a-9dfc-c7b90c0a0d54</UserSecretsId>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Configuration\**" />
+    <Compile Remove="Extensions\**" />
+    <Content Remove="Configuration\**" />
+    <Content Remove="Extensions\**" />
+    <EmbeddedResource Remove="Configuration\**" />
+    <EmbeddedResource Remove="Extensions\**" />
+    <None Remove="Configuration\**" />
+    <None Remove="Extensions\**" />
+  </ItemGroup>
 
   <ItemGroup>
     
@@ -36,10 +48,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Enterprise.Applications.Identity.Application\Enterprise.Applications.Identity.Application.csproj" />
     <ProjectReference Include="..\Enterprise.Applications.Identity.Infra\Enterprise.Applications.Identity.Infra.csproj" />    
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Configuration\" />
-    <Folder Include="Extensions\" />
   </ItemGroup>
 </Project>
