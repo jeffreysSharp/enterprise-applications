@@ -3,13 +3,13 @@ using MediatR;
 
 namespace Enterprise.Applications.Application.Commands.Role.Update
 {
-    public class UpdateRoleCommand : IRequest<string>
+    public class UpdateRoleCommand : IRequest<int>
     {
         public string Id { get; set; }
         public string RoleName { get; set; }
     }
 
-    public class UpdateRoleCommandHandler : IRequestHandler<UpdateRoleCommand, string>
+    public class UpdateRoleCommandHandler : IRequestHandler<UpdateRoleCommand, int>
     {
         private readonly IIdentityService _identityService;
 
@@ -18,11 +18,10 @@ namespace Enterprise.Applications.Application.Commands.Role.Update
             _identityService = identityService;
         }
 
-        public async Task<string> Handle(UpdateRoleCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(UpdateRoleCommand request, CancellationToken cancellationToken)
         {
             var result = await _identityService.UpdateRole(request.Id, request.RoleName);
-
-            return result;
+            return result ? 1 : 0;
         }
     }
 }

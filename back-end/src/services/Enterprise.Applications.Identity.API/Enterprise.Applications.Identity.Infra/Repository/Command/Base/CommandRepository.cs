@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Enterprise.Applications.Identity.Infra.Repository.Command.Base
 {
-    // Generic command repository class
     public class CommandRepository<T> : ICommandRepository<T> where T : class
     {
         protected readonly ApplicationDbContext _context;
@@ -14,7 +13,6 @@ namespace Enterprise.Applications.Identity.Infra.Repository.Command.Base
             _context = context;
         }
 
-        // Insert
         public async Task<T> AddAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
@@ -22,14 +20,12 @@ namespace Enterprise.Applications.Identity.Infra.Repository.Command.Base
             return entity;
         }
 
-        // Update
         public async Task UpdateAsync(T entity)
         {
             _context.Entry(entity).State = EntityState.Modified;
             await _context.SaveChangesAsync();
         }
 
-        // Delete
         public async Task DeleteAsync(T entity)
         {
             _context.Set<T>().Remove(entity);
