@@ -1,5 +1,4 @@
 ﻿using Enterprise.Applications.Application.Commands.Auth;
-using Enterprise.Applications.Application.Commands.User.Create;
 using Enterprise.Applications.Application.DTOs;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
