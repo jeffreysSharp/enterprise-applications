@@ -30,7 +30,7 @@ namespace Enterprise.Applications.Application.Commands.Auth
         {
             var result = await _identityService.SigninUserAsync(request.UserName, request.Password);
 
-            if (result.IsNullOrEmpty())
+            if (!result)
             {
                 throw new BadRequestException("Invalid username or password");
             }
