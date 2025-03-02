@@ -7,32 +7,36 @@ using MediatR;
 
 namespace Enterprise.Applications.Application.Commands.Auth
 {
-    public class AuthCommand : IRequest<AuthResponseDTO>
+    public class RegisterCommand : IRequest<AuthResponseDTO>
     {
+        public string FullName { get; set; }
         public string UserName { get; set; }
+        public string Email { get; set; }
         public string Password { get; set; }
+        public string ConfirmationPassword { get; set; }
+        public List<string> Roles { get; set; }
     }
 
 
-    public class AuthCommandHandler : IRequestHandler<AuthCommand, AuthResponseDTO>
+    public class RegisterCommandHandler : IRequestHandler<RegisterCommand, AuthResponseDTO>
     {
         private readonly ITokenGenerator _tokenGenerator;
         private readonly IIdentityService _identityService;
 
-        public AuthCommandHandler(IIdentityService identityService, ITokenGenerator tokenGenerator)
+        public RegisterCommandHandler(IIdentityService identityService, ITokenGenerator tokenGenerator)
         {
             _identityService = identityService;
             _tokenGenerator = tokenGenerator;
         }
 
-        public async Task<AuthResponseDTO> Handle(AuthCommand request, CancellationToken cancellationToken)
+        public async Task<AuthResponseDTO> Handle(RegisterCommand request, CancellationToken cancellationToken)
         {
-            var result = await _identityService.SigninUserAsync(request.UserName, request.Password);
+            var registerResult = await _identityService.CreateUserAsync(request.UserName, request.Password, request.Email, request.FullName, request.Roles);
 
-            if (!result)
-            {
-                throw new BadRequestException("Invalid username or password");
-            }
+            if (!registerResult.isSucceed)            
+                throw new BadRequestException("Invalid username or password");            
+            else            
+                await _identityService.SigninUserAsync(request.UserName, request.Password);
 
             var (userId, fullName, userName, email, roles) = await _identityService.GetUserDetailsAsync(await _identityService.GetUserIdAsync(request.UserName));
 
