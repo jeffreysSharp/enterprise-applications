@@ -23,27 +23,30 @@ namespace Enterprise.Applications.Identity.Infra.Services
         public async Task<bool> AssignUserToRole(string userName, IList<string> roles)
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == userName);
+
             if (user == null)
             {
                 throw new NotFoundException("User not found");
             }
 
             var result = await _userManager.AddToRolesAsync(user, roles);
+
             return result.Succeeded;
         }
 
         public async Task<bool> CreateRoleAsync(string roleName)
         {
             var result = await _roleManager.CreateAsync(new IdentityRole(roleName));
+
             if (!result.Succeeded)
             {
                 throw new ValidationException(result.Errors);
             }
+
             return result.Succeeded;
         }
 
 
-        // Return multiple value
         public async Task<(bool isSucceed, string userId)> CreateUserAsync(string userName, string password, string email, string fullName, List<string> roles)
         {
             var user = new ApplicationUser()
@@ -61,16 +64,19 @@ namespace Enterprise.Applications.Identity.Infra.Services
             }
 
             var addUserRole = await _userManager.AddToRolesAsync(user, roles);
+
             if (!addUserRole.Succeeded)
             {
                 throw new ValidationException(addUserRole.Errors);
             }
+
             return (result.Succeeded, user.Id);
         }
 
         public async Task<bool> DeleteRoleAsync(string roleId)
         {
             var roleDetails = await _roleManager.FindByIdAsync(roleId);
+
             if (roleDetails == null)
             {
                 throw new NotFoundException("Role not found");
@@ -80,29 +86,34 @@ namespace Enterprise.Applications.Identity.Infra.Services
             {
                 throw new BadRequestException("You can not delete Administrator Role");
             }
+
             var result = await _roleManager.DeleteAsync(roleDetails);
+            
             if (!result.Succeeded)
             {
                 throw new ValidationException(result.Errors);
             }
+
             return result.Succeeded;
         }
 
         public async Task<bool> DeleteUserAsync(string userId)
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
             if (user == null)
             {
                 throw new NotFoundException("User not found");
-                //throw new Exception("User not found");
             }
 
             if (user.UserName == "system" || user.UserName == "admin")
             {
                 throw new Exception("You can not delete system or admin user");
-                //throw new BadRequestException("You can not delete system or admin user");
+
             }
+
             var result = await _userManager.DeleteAsync(user);
+
             return result.Succeeded;
         }
 
@@ -122,11 +133,6 @@ namespace Enterprise.Applications.Identity.Infra.Services
         public Task<List<(string id, string userName, string email, IList<string> roles)>> GetAllUsersDetailsAsync()
         {
             throw new NotImplementedException();
-
-            //var roles = await _userManager.GetRolesAsync(user);
-            //return (user.Id, user.UserName, user.Email, roles);
-
-            //var users = _userManager.Users.ToListAsync();
         }
 
         public async Task<List<(string id, string roleName)>> GetRolesAsync()
@@ -143,55 +149,67 @@ namespace Enterprise.Applications.Identity.Infra.Services
         public async Task<(string userId, string fullName, string UserName, string email, IList<string> roles)> GetUserDetailsAsync(string userId)
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
             if (user == null)
             {
                 throw new NotFoundException("User not found");
             }
+
             var roles = await _userManager.GetRolesAsync(user);
+
             return (user.Id, user.FullName, user.UserName, user.Email, roles);
         }
 
         public async Task<(string userId, string fullName, string UserName, string email, IList<string> roles)> GetUserDetailsByUserNameAsync(string userName)
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == userName);
+
             if (user == null)
             {
                 throw new NotFoundException("User not found");
             }
+
             var roles = await _userManager.GetRolesAsync(user);
+
             return (user.Id, user.FullName, user.UserName, user.Email, roles);
         }
 
         public async Task<string> GetUserIdAsync(string userName)
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == userName);
+
             if (user == null)
             {
-                throw new NotFoundException("User not found");
-                //throw new Exception("User not found");
+                throw new NotFoundException("User not found");                
             }
+
             return await _userManager.GetUserIdAsync(user);
         }
 
         public async Task<string> GetUserNameAsync(string userId)
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
             if (user == null)
             {
                 throw new NotFoundException("User not found");
-                //throw new Exception("User not found");
+                
             }
+
             return await _userManager.GetUserNameAsync(user);
         }
 
         public async Task<List<string>> GetUserRolesAsync(string userId)
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == userId);
+
             if (user == null)
             {
                 throw new NotFoundException("User not found");
             }
+
             var roles = await _userManager.GetRolesAsync(user);
+
             return roles.ToList();
         }
 
@@ -203,6 +221,7 @@ namespace Enterprise.Applications.Identity.Infra.Services
             {
                 throw new NotFoundException("User not found");
             }
+
             return await _userManager.IsInRoleAsync(user, role);
         }
 
@@ -214,9 +233,8 @@ namespace Enterprise.Applications.Identity.Infra.Services
         public async Task<bool> SigninUserAsync(string userName, string password)
         {
             var result = await _signInManager.PasswordSignInAsync(userName, password, true, false);
+
             return result.Succeeded;
-
-
         }
 
         public async Task<bool> UpdateUserProfile(string id, string fullName, string email, IList<string> roles)
@@ -224,6 +242,7 @@ namespace Enterprise.Applications.Identity.Infra.Services
             var user = await _userManager.FindByIdAsync(id);
             user.FullName = fullName;
             user.Email = email;
+
             var result = await _userManager.UpdateAsync(user);
 
             return result.Succeeded;
@@ -244,6 +263,7 @@ namespace Enterprise.Applications.Identity.Infra.Services
                 var result = await _roleManager.UpdateAsync(role);
                 return result.Succeeded;
             }
+
             return false;
         }
 
@@ -252,6 +272,7 @@ namespace Enterprise.Applications.Identity.Infra.Services
             var user = await _userManager.FindByNameAsync(userName);
             var existingRoles = await _userManager.GetRolesAsync(user);
             var result = await _userManager.RemoveFromRolesAsync(user, existingRoles);
+
             result = await _userManager.AddToRolesAsync(user, usersRole);
 
             return result.Succeeded;
